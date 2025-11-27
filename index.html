@@ -153,6 +153,33 @@ nav {
  z-index: 999999;
 }
  </style>
+
+<!-- HERO SLIDER (Version 2) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+ const hero = document.querySelector('.hero');
+ if (!hero) return;
+
+ const heroImages = [
+  "https://tatar-tur.ucoz.net/1460745080-1-.jpg",
+  "https://hotelamsterdam.ucoz.net/kazan-3227834.jpg",
+  "https://hotelamsterdam.ucoz.net/kazan-2825615.jpg",
+  "https://hotelamsterdam.ucoz.net/temple-4981094-1-.jpg",
+  "https://hotelamsterdam.ucoz.net/city-1479947.jpg"
+ ];
+
+ let current = 0;
+
+ function setHeroBg() {
+   hero.style.backgroundImage = `url('${heroImages[current]}')`;
+   current = (current + 1) % heroImages.length;
+ }
+
+ setHeroBg();
+ setInterval(setHeroBg, 5000);
+});
+</script>
+
 </head>
 
 <body>
