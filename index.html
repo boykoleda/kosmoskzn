@@ -5,6 +5,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
  <title>ханума — Экскурсии по Казани и Татарстану</title>
 
+ <!-- Стили клавиатуры -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@3/build/css/index.css">
 
  <style>
@@ -16,13 +17,13 @@ html, body {
  user-select: none;
 }
 body {
- font-family: 'Segoe UI', sans-serif;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  background-color: #f5fafa;
  color: #222;
  line-height: 1.6;
 }
 
-/* Навигация */
+/* === НАВИГАЦИЯ === */
 nav {
  background-color: #12B9C9;
  display: flex;
@@ -31,152 +32,142 @@ nav {
 }
 .button {
  color: white;
- padding: 10px 20px;
+ padding: 10px 22px;
  text-decoration: none;
  font-weight: bold;
  transition: background 0.3s;
  background-color: #12B9C9;
  border-radius: 30px;
- margin: 5px;
+ margin: 6px;
  display: inline-block;
 }
 .button:hover { background-color: #0fa5b3; }
 
-/* HERO */
+/* === HERO === */
 .hero {
  position: relative;
  background-size: cover;
  background-position: center;
  text-align: center;
  padding: 120px 50px;
- color: #000;
  transition: background-image 1s ease-in-out;
 }
 .hero-text {
- position: relative;
- z-index: 2;
  background: rgba(255,255,255,0.8);
  display: inline-block;
- padding: 25px 35px;
+ padding: 25px 40px;
  border-radius: 14px;
 }
 .hero h1 {
  font-size: 6rem;
  font-weight: 600;
- margin-bottom: 15px;
 }
 .hero p {
- font-size: 1.2rem;
+ font-size: 1.3rem;
 }
 
-/* Мобильная версия */
+/* === МОБИЛЬНАЯ ВЕРСИЯ === */
 @media (max-width: 600px) {
- .hero h1 { font-size: 2.4rem; }
- .hero { padding: 60px 20px; }
+ .hero {
+   padding: 70px 20px;
+ }
+ .hero h1 {
+   font-size: 3rem;
+ }
+ .hero p {
+   font-size: 1.1rem;
+ }
 
  #excursion-widget-container {
-    padding: 10px !important;
-    border-width: 4px !important;
-    background-size: 90px !important;
- }
- .excursions-widget-wrapper { padding: 5px !important; }
-
- #excursion-widget-container img {
-    width: 100% !important;
-    border-radius: 12px !important;
+   padding: 12px !important;
+   background-size: 85px !important;
+   border-width: 4px !important;
  }
 }
 
+/* === КОНТЕЙНЕРЫ === */
 .container {
  max-width: 1200px;
  margin: 40px auto;
  padding: 0 20px;
 }
-
 .section-title {
- font-size: 1.6em;
- margin-bottom: 20px;
+ font-size: 1.8rem;
  text-align: center;
  color: #12B9C9;
+ margin-bottom: 20px;
 }
 
+/* === ВИДЖЕТ === */
 .excursions-widget-wrapper {
  background: white;
- padding: 20px;
+ padding: 22px;
  border-radius: 10px;
  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
 #excursion-widget-container {
- font-family: "Segoe UI";
- font-size: 16px;
- padding: 20px;
+ padding: 22px;
  border: 6px double #12B9C9;
  border-radius: 12px;
- background-size: 120px;
+ font-size: 16px;
  background-color: #f0fafa;
- background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tatar_ornament.svg/800px-Tatar_ornament.svg.png');
+ background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tatar_ornament.svg/800px-Tatar_ornament.svg.png");
+ background-size: 120px;
 }
 
-/* Автобусы */
+/* === ТРАНСПОРТ === */
 .bus-photo-block {
  display: flex;
  gap: 20px;
  justify-content: center;
  flex-wrap: wrap;
- margin-top: 30px;
 }
 .bus-photo-block img {
  max-width: 48%;
- border-radius: 10px;
- box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+ border-radius: 12px;
+ box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
-/* Клавиатура */
+/* === КЛАВИАТУРА === */
 #keyboard {
  position: fixed;
- bottom: 0;
- left: 0;
- right: 0;
+ bottom: 0; left: 0; right: 0;
  background: #fff;
- z-index: 9999;
  display: none;
- box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+ z-index: 99999;
+ box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
 }
 
-/* СНЕГ */
+/* ❄ СНЕГ ❄ */
 .snowflake {
  position: fixed;
  top: -50px;
- color: white;
+ color: #fff;
  pointer-events: none;
  z-index: 999999;
 }
  </style>
 
-<!-- HERO SLIDER (Version 2) -->
+<!-- 🚀 HERO SLIDER v2 — плавная смена каждые 5 сек -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
- const hero = document.querySelector('.hero');
- if (!hero) return;
-
- const heroImages = [
+document.addEventListener("DOMContentLoaded", () => {
+ const hero = document.querySelector(".hero");
+ const images = [
   "https://tatar-tur.ucoz.net/1460745080-1-.jpg",
   "https://hotelamsterdam.ucoz.net/kazan-3227834.jpg",
   "https://hotelamsterdam.ucoz.net/kazan-2825615.jpg",
   "https://hotelamsterdam.ucoz.net/temple-4981094-1-.jpg",
   "https://hotelamsterdam.ucoz.net/city-1479947.jpg"
  ];
+ let i = 0;
 
- let current = 0;
-
- function setHeroBg() {
-   hero.style.backgroundImage = `url('${heroImages[current]}')`;
-   current = (current + 1) % heroImages.length;
+ function nextBg() {
+   hero.style.backgroundImage = `url('${images[i]}')`;
+   i = (i + 1) % images.length;
  }
 
- setHeroBg();
- setInterval(setHeroBg, 5000);
+ nextBg();
+ setInterval(nextBg, 5000);
 });
 </script>
 
@@ -184,52 +175,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <body>
 
+<!-- === НАВИГАЦИЯ === -->
 <nav>
  <a href="#excursion-widget-container" class="button">Популярные экскурсии</a>
  <a href="#about" class="button">О нас</a>
  <a href="#departure-location" class="button">Место отправления</a>
 </nav>
 
+<!-- === HERO === -->
 <div class="hero">
  <div class="hero-text">
- <h1>Экскурсии</h1>
- <p>по Казани и Татарстану!<br>Авторские туры, лучшие гиды и незабываемые впечатления</p>
+   <h1>Экскурсии</h1>
+   <p>по Казани и Татарстану!<br>Авторские туры, лучшие гиды и незабываемые впечатления</p>
  </div>
 </div>
 
-<div style="text-align:center;color:red;font-size:1.4em;font-weight:bold;margin:25px 0;">
+<!-- === ТЕЛЕФОН === -->
+<div style="text-align:center;color:red;font-size:1.6rem;font-weight:bold;margin:25px 0;">
  телефон горячей линии: 8-800-777-18-53
 </div>
 
+<!-- === ВИДЖЕТ === -->
 <div class="container">
  <div class="excursions-widget-wrapper">
    <div id="excursion-widget-container"></div>
  </div>
 </div>
 
-<!-- ВИДЖЕТ -->
 <script>
-(function () {
- var script = document.createElement('script');
- script.src = 'https://ekskursii-kazani.ru/widget.js';
- script.async = true;
- script.onload = function () {
- Widget.init({
-   apiUrl: 'https://ekskursii-kazani.ru/api/widget/articles',
-   token: '32|5XMvb2INIj6FhyZ6pyaDsyEgyf30ikMa9QOYRE6aad61f90f',
-   containerId: 'excursion-widget-container',
-   userId: 67,
-   showKeyboard: true
- });
+(function(){
+ const s=document.createElement("script");
+ s.src="https://ekskursii-kazani.ru/widget.js";
+ s.onload=function(){
+   Widget.init({
+     apiUrl:"https://ekskursii-kazani.ru/api/widget/articles",
+     token:"32|5XMvb2INIj6FhyZ6pyaDsyEgyf30ikMa9QOYRE6aad61f90f",
+     containerId:"excursion-widget-container",
+     userId:67,
+     showKeyboard:true
+   });
+
+   /* Удаление ООО "Экскурсионное бюро Казань" */
+   const obs = new MutationObserver(()=>{
+     document.querySelectorAll("#excursion-widget-container div")
+       .forEach(e=>{ if(e.innerText.includes('ООО "Экскурсионное бюро Казань"')) e.remove(); });
+   });
+   obs.observe(document.getElementById("excursion-widget-container"), {childList:true,subtree:true});
  };
- document.head.appendChild(script);
+ document.head.appendChild(s);
 })();
 </script>
 
-<div class="footer-buttons" style="text-align:center;margin:30px 0;">
- <a href="#departure-location" class="button">Место отправления</a>
-</div>
-
+<!-- === О НАС === -->
 <div class="container" id="about">
  <h2 class="section-title">О нас</h2>
  <p>
@@ -251,15 +248,17 @@ document.addEventListener('DOMContentLoaded', () => {
  </p>
 </div>
 
+<!-- === ТРАНСПОРТ === -->
 <div class="container">
  <h2 class="section-title">Наш транспорт</h2>
  <div class="bus-photo-block">
- <img src="https://xn----7sbaj9b1ablbd6jb.xn--p1ai/WhatsApp_Image_2025-06-02_at_20.30.42-1-.jpeg">
- <img src="https://xn----7sbaj9b1ablbd6jb.xn--p1ai/WhatsApp_Image_2025-06-02_at_20.30.42.jpeg">
+   <img src="https://xn----7sbaj9b1ablbd6jb.xn--p1ai/WhatsApp_Image_2025-06-02_at_20.30.42-1-.jpeg">
+   <img src="https://xn----7sbaj9b1ablbd6jb.xn--p1ai/WhatsApp_Image_2025-06-02_at_20.30.42.jpeg">
  </div>
 </div>
 
-<div class="departure-block" id="departure-location" style="text-align:center;padding:40px 20px;">
+<!-- === МЕСТО ОТПРАВЛЕНИЯ === -->
+<div class="container" id="departure-location">
  <h2 class="section-title">Место отправления</h2>
  <p>
 Наши экскурсии начинаются в самом сердце города на улице Баумана —  
@@ -267,33 +266,29 @@ document.addEventListener('DOMContentLoaded', () => {
 напротив станции метро «Площадь Тукая».  
 Удобное местоположение позволяет легко добраться из любой точки Казани.
  </p>
- <img src="https://tatar-tur.ucoz.net/WhatsApp_Image_2025-04-28_at_12.52.15.jpeg" style="max-width:100%;border-radius:12px;">
+ <img src="https://tatar-tur.ucoz.net/WhatsApp_Image_2025-04-28_at_12.52.15.jpeg"
+      style="width:100%;border-radius:12px;margin-top:15px;">
 </div>
 
-<footer style="background:#0e97a6;color:white;text-align:center;padding:15px;font-size:0.9em;">
- © 2025 Экскурсионное Бюро Казань.
+<!-- === ФУТЕР === -->
+<footer style="background:#0e97a6;color:white;text-align:center;padding:15px;margin-top:40px;">
+ © 2025 Экскурсионное Бюро Казань. Все права защищены.
 </footer>
 
-<!-- ❄️ РАБОЧИЙ СНЕГ -->
+<!-- ❄ РАБОЧИЙ СНЕГ -->
 <script>
-setInterval(() => {
-  const flake = document.createElement("div");
-  flake.className = "snowflake";
-  flake.textContent = "❄";
-
-  flake.style.left = Math.random() * window.innerWidth + "px";
-  flake.style.fontSize = (20 + Math.random()*25) + "px";
-  flake.style.opacity = 0.8;
-  flake.style.transition = `transform ${6 + Math.random()*6}s linear`;
-
-  document.body.appendChild(flake);
-
-  requestAnimationFrame(() => {
-    flake.style.transform = `translateY(${window.innerHeight + 200}px)`;
-  });
-
-  setTimeout(() => flake.remove(), 12000);
-}, 150);
+setInterval(()=>{
+ let f=document.createElement("div");
+ f.className="snowflake";
+ f.textContent="❄";
+ f.style.left=Math.random()*window.innerWidth+"px";
+ f.style.fontSize=(25+Math.random()*25)+"px";
+ f.style.opacity=.8;
+ f.style.transition=`transform ${6+Math.random()*6}s linear`;
+ document.body.appendChild(f);
+ requestAnimationFrame(()=>f.style.transform=`translateY(${window.innerHeight+200}px)`);
+ setTimeout(()=>f.remove(),12000);
+},150);
 </script>
 
 </body>
