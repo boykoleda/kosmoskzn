@@ -233,22 +233,33 @@ nav {
 </footer>
 
 <!-- ❄️ СНЕГ — ГАРАНТИРОВАННО РАБОТАЮЩИЙ -->
+<!-- ❄️ РАБОЧИЙ СКРИПТ СНЕГА (ГАРАНТИЯ) -->
 <script>
-function createSnowflake() {
- const snowflake = document.createElement("div");
- snowflake.classList.add("snowflake");
- snowflake.textContent = "❄";
- snowflake.style.left = Math.random() * window.innerWidth + "px";
- snowflake.style.fontSize = (20 + Math.random()*30) + "px";
- snowflake.style.animationDuration = (4 + Math.random()*6) + "s";
+setInterval(() => {
+  const flake = document.createElement("div");
+  flake.textContent = "❄";
+  flake.style.position = "fixed";
+  flake.style.top = "-50px";
+  flake.style.left = Math.random() * window.innerWidth + "px";
+  flake.style.fontSize = (20 + Math.random()*25) + "px";
+  flake.style.opacity = 0.7 + Math.random()*0.3;
+  flake.style.color = "white";
+  flake.style.pointerEvents = "none";
+  flake.style.zIndex = "999999";
 
- document.body.appendChild(snowflake);
+  const duration = 5 + Math.random() * 7;
+  flake.style.transition = `transform ${duration}s linear`;
 
- setTimeout(() => snowflake.remove(), 12000);
-}
+  document.body.appendChild(flake);
 
-setInterval(createSnowflake, 150);
+  requestAnimationFrame(() => {
+    flake.style.transform = `translateY(${window.innerHeight + 100}px)`;
+  });
+
+  setTimeout(() => flake.remove(), duration * 1000);
+}, 150);
 </script>
+
 
 </body>
 </html>
