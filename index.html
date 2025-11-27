@@ -4,6 +4,7 @@
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
  <title>ханума — Экскурсии по Казани и Татарстану</title>
+
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@3/build/css/index.css">
 
  <style>
@@ -68,12 +69,11 @@ nav {
  font-size: 1.2rem;
 }
 
-/* Мобайл */
+/* Мобильная версия */
 @media (max-width: 600px) {
  .hero h1 { font-size: 2.4rem; }
  .hero { padding: 60px 20px; }
 
- /* делаем виджет шире */
  #excursion-widget-container {
     padding: 10px !important;
     border-width: 4px !important;
@@ -118,6 +118,7 @@ nav {
  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tatar_ornament.svg/800px-Tatar_ornament.svg.png');
 }
 
+/* Автобусы */
 .bus-photo-block {
  display: flex;
  gap: 20px;
@@ -143,22 +144,15 @@ nav {
  box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
 }
 
-/* ❄ снег контейнер */
+/* СНЕГ */
 .snowflake {
  position: fixed;
- top: -10px;
+ top: -50px;
  color: white;
- font-size: 24px;
- opacity: 0.9;
  pointer-events: none;
- animation: fall linear infinite;
- z-index: 99999;
+ z-index: 999999;
 }
-
-@keyframes fall {
- to { transform: translateY(110vh); }
-}
-</style>
+ </style>
 </head>
 
 <body>
@@ -172,7 +166,7 @@ nav {
 <div class="hero">
  <div class="hero-text">
  <h1>Экскурсии</h1>
- <p>по Казани и Татарстану!<br>Авторские туры, лучшие гиды и впечатления</p>
+ <p>по Казани и Татарстану!<br>Авторские туры, лучшие гиды и незабываемые впечатления</p>
  </div>
 </div>
 
@@ -186,7 +180,7 @@ nav {
  </div>
 </div>
 
-<!-- Виджет -->
+<!-- ВИДЖЕТ -->
 <script>
 (function () {
  var script = document.createElement('script');
@@ -211,7 +205,23 @@ nav {
 
 <div class="container" id="about">
  <h2 class="section-title">О нас</h2>
- <p>Экскурсионное Бюро Казань… текст…</p>
+ <p>
+Экскурсионное Бюро Казань — это ваш надежный гид по невероятному миру Татарстана.  
+Мы предлагаем эксклюзивные авторские туры, которые познакомят вас с историей, культурой и природой нашего региона.  
+Наша команда опытных гидов, истинных энтузиастов своего дела, гарантирует, что ваше путешествие будет наполнено яркими впечатлениями и незабываемыми эмоциями.
+<br><br><strong>Почему стоит выбрать именно нас?</strong>
+<br><br>✔ Индивидуальный подход  
+✔ Профессионализм и забота  
+✔ Безупречное качество  
+✔ Культура и аутентичность  
+✔ Бесплатное бронирование  
+✔ Комфортабельные автобусы  
+✔ Аккредитованные гиды  
+✔ Бесплатный радиогид для лучшей слышимости экскурсовода
+<br><br>
+Экскурсионное Бюро Казань — вы получите не просто экскурсии,  
+а целое путешествие по пяти чувствам, которое оставит в вашем сердце частичку нашего прекрасного региона.
+ </p>
 </div>
 
 <div class="container">
@@ -224,7 +234,12 @@ nav {
 
 <div class="departure-block" id="departure-location" style="text-align:center;padding:40px 20px;">
  <h2 class="section-title">Место отправления</h2>
- <p>Наши экскурсии начинаются…</p>
+ <p>
+Наши экскурсии начинаются в самом сердце города на улице Баумана —  
+у входа в гостиницу «Шаляпин и Богоявленской Колокольни»,  
+напротив станции метро «Площадь Тукая».  
+Удобное местоположение позволяет легко добраться из любой точки Казани.
+ </p>
  <img src="https://tatar-tur.ucoz.net/WhatsApp_Image_2025-04-28_at_12.52.15.jpeg" style="max-width:100%;border-radius:12px;">
 </div>
 
@@ -232,35 +247,27 @@ nav {
  © 2025 Экскурсионное Бюро Казань.
 </footer>
 
-<!-- ❄️ СНЕГ — ГАРАНТИРОВАННО РАБОТАЮЩИЙ -->
-<!-- ❄️ РАБОЧИЙ СКРИПТ СНЕГА (ГАРАНТИЯ) -->
+<!-- ❄️ РАБОЧИЙ СНЕГ -->
 <script>
 setInterval(() => {
   const flake = document.createElement("div");
+  flake.className = "snowflake";
   flake.textContent = "❄";
-  flake.style.position = "fixed";
-  flake.style.top = "-50px";
+
   flake.style.left = Math.random() * window.innerWidth + "px";
   flake.style.fontSize = (20 + Math.random()*25) + "px";
-  flake.style.opacity = 0.7 + Math.random()*0.3;
-  flake.style.color = "white";
-  flake.style.pointerEvents = "none";
-  flake.style.zIndex = "999999";
-
-  const duration = 5 + Math.random() * 7;
-  flake.style.transition = `transform ${duration}s linear`;
+  flake.style.opacity = 0.8;
+  flake.style.transition = `transform ${6 + Math.random()*6}s linear`;
 
   document.body.appendChild(flake);
 
   requestAnimationFrame(() => {
-    flake.style.transform = `translateY(${window.innerHeight + 100}px)`;
+    flake.style.transform = `translateY(${window.innerHeight + 200}px)`;
   });
 
-  setTimeout(() => flake.remove(), duration * 1000);
+  setTimeout(() => flake.remove(), 12000);
 }, 150);
 </script>
 
-
 </body>
 </html>
-
