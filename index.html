@@ -3,17 +3,17 @@
 <head>
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
- <title>Космос — Экскурсии по Казани и Татарстану</title>
-
- <!-- Стили клавиатуры -->
+ <title>ханума — Экскурсии по Казани и Татарстану</title>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@3/build/css/index.css">
-
  <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
  scroll-behavior: smooth;
  touch-action: manipulation;
  overscroll-behavior: none;
+ -webkit-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
  user-select: none;
 }
 body {
@@ -22,8 +22,6 @@ body {
  color: #222;
  line-height: 1.6;
 }
-
-/* === НАВИГАЦИЯ === */
 nav {
  background-color: #12B9C9;
  display: flex;
@@ -32,275 +30,557 @@ nav {
 }
 .button {
  color: white;
- padding: 10px 22px;
+ padding: 10px 20px;
  text-decoration: none;
  font-weight: bold;
  transition: background 0.3s;
  background-color: #12B9C9;
  border-radius: 30px;
- margin: 6px;
+ margin: 5px;
  display: inline-block;
 }
 .button:hover { background-color: #0fa5b3; }
 
-/* === HERO === */
+/* ---- Hero Block ---- */
 .hero {
  position: relative;
+ /* фон управляется через JS-слайдер */
  background-size: cover;
  background-position: center;
  text-align: center;
  padding: 120px 50px;
+ color: #000;
  transition: background-image 1s ease-in-out;
 }
 .hero-text {
+ position: relative;
+ z-index: 2;
  background: rgba(255,255,255,0.8);
  display: inline-block;
- padding: 25px 40px;
+ padding: 25px 35px;
  border-radius: 14px;
 }
 .hero h1 {
  font-size: 6rem;
  font-weight: 600;
+ margin-bottom: 15px;
+ color: #000;
 }
 .hero p {
- font-size: 1.3rem;
+ font-size: 1.2rem;
+ line-height: 1.5;
+ color: #000;
 }
-
-/* === МОБИЛЬНАЯ ВЕРСИЯ === */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+ .hero h1 { font-size: 4rem; }
+}
+@media (max-width: 480px) {
  .hero {
-   padding: 70px 20px;
+  padding: 50px 10px;
  }
  .hero h1 {
-   font-size: 3rem;
+  font-size: 2.2rem;
+  line-height: 1.1;
  }
  .hero p {
-   font-size: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
  }
-
- #excursion-widget-container {
-   padding: 12px !important;
-   background-size: 85px !important;
-   border-width: 4px !important;
+ .hero-text {
+  padding: 15px 20px;
  }
 }
 
-/* === КОНТЕЙНЕРЫ === */
 .container {
  max-width: 1200px;
  margin: 40px auto;
  padding: 0 20px;
 }
 .section-title {
- font-size: 1.8rem;
+ font-size: 1.6em;
+ margin-bottom: 20px;
  text-align: center;
  color: #12B9C9;
+}
+.section-button {
+ text-align: center;
  margin-bottom: 20px;
 }
-
-/* === ВИДЖЕТ === */
 .excursions-widget-wrapper {
  background: white;
- padding: 22px;
+ padding: 20px;
  border-radius: 10px;
  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 #excursion-widget-container {
- padding: 22px;
- border: 6px double #12B9C9;
- border-radius: 12px;
+ font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
  font-size: 16px;
- background-color: #f0fafa;
- background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tatar_ornament.svg/800px-Tatar_ornament.svg.png");
+ line-height: 1.7;
+ color: #333;
+ border: 6px double #12B9C9;
+ padding: 20px;
+ background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Tatar_ornament.svg/800px-Tatar_ornament.svg.png') repeat;
  background-size: 120px;
+ background-color: #f0fafa;
+ box-shadow: 0 0 10px rgba(0,0,0,0.1);
+ border-radius: 12px;
+ margin: 20px 0;
 }
-
-/* === ТРАНСПОРТ === */
+#excursion-widget-container p {
+ margin-bottom: 1em;
+}
+.footer-buttons {
+ text-align: center;
+ margin: 30px 0;
+}
+.footer-buttons a {
+ display: inline-block;
+ background-color: #12B9C9;
+ color: white;
+ padding: 10px 20px;
+ border-radius: 30px;
+ margin: 5px;
+ text-decoration: none;
+ font-weight: bold;
+ transition: background 0.3s;
+}
+.footer-buttons a:hover { background-color: #0fa5b3; }
+footer {
+ background-color: #0e97a6;
+ color: white;
+ text-align: center;
+ padding: 15px;
+ font-size: 0.8em;
+}
+#powered-by { display: none; }
+.departure-block {
+ background-color: #ffffff;
+ padding: 40px 20px;
+ text-align: center;
+ border-top: 3px solid #12B9C9;
+}
+.departure-block img {
+ max-width: 100%;
+ height: auto;
+ margin-top: 20px;
+ border-radius: 10px;
+ box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 .bus-photo-block {
  display: flex;
  gap: 20px;
  justify-content: center;
  flex-wrap: wrap;
+ margin-top: 30px;
 }
 .bus-photo-block img {
+ flex: 1;
  max-width: 48%;
- border-radius: 12px;
- box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+ border-radius: 10px;
+ box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+ object-fit: cover;
 }
 
-/* === КЛАВИАТУРА === */
+/* Клавиатура */
 #keyboard {
  position: fixed;
- bottom: 0; left: 0; right: 0;
+ bottom: 0;
+ left: 0;
+ right: 0;
  background: #fff;
+ z-index: 9999;
  display: none;
- z-index: 99999;
- box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+ box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+ touch-action: none;
+ will-change: transform;
+ transform-origin: bottom left;
 }
-
-/* ❄ СНЕГ ❄ */
-.snowflake {
- position: fixed;
- top: -50px;
- color: #fff;
- pointer-events: none;
- z-index: 999999;
+#keyboard-resize-controls {
+ position: absolute;
+ top: 5px;
+ right: 10px;
+ z-index: 10001;
+}
+#keyboard-resize-controls button {
+ font-size: 20px;
+ background-color: #12B9C9;
+ color: white;
+ border: none;
+ border-radius: 6px;
+ padding: 5px 10px;
+ margin-left: 5px;
+ cursor: pointer;
+ box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+#keyboard-resize-controls button:hover {
+ background-color: #0fa5b3;
 }
  </style>
-
-<!-- 🚀 HERO SLIDER v2 — плавная смена каждые 5 сек -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
- const hero = document.querySelector(".hero");
- const images = [
-  "https://tatar-tur.ucoz.net/1460745080-1-.jpg",
-  "https://hotelamsterdam.ucoz.net/kazan-3227834.jpg",
-  "https://hotelamsterdam.ucoz.net/kazan-2825615.jpg",
-  "https://hotelamsterdam.ucoz.net/temple-4981094-1-.jpg",
-  "https://hotelamsterdam.ucoz.net/city-1479947.jpg"
- ];
- let i = 0;
-
- function nextBg() {
-   hero.style.backgroundImage = `url('${images[i]}')`;
-   i = (i + 1) % images.length;
- }
-
- nextBg();
- setInterval(nextBg, 5000);
-});
-</script>
-
 </head>
 
 <body>
-
-<!-- === НАВИГАЦИЯ === -->
 <nav>
  <a href="#excursion-widget-container" class="button">Популярные экскурсии</a>
  <a href="#about" class="button">О нас</a>
  <a href="#departure-location" class="button">Место отправления</a>
 </nav>
 
-<!-- === HERO === -->
 <div class="hero">
  <div class="hero-text">
-   <h1>Экскурсии</h1>
-   <p>по Казани и Татарстану!<br>Авторские туры, лучшие гиды и незабываемые впечатления</p>
+  <h1>Экскурсии</h1>
+  <p>по Казани и Татарстану!<br>Авторские туры, лучшие гиды и незабываемые впечатления</p>
  </div>
 </div>
 
-<!-- === ТЕЛЕФОН === -->
-<div style="text-align:center;color:red;font-size:1.6rem;font-weight:bold;margin:25px 0;">
+<div style="text-align: center; color: red; font-size: 1.4em; font-weight: bold; margin: 25px 0;">
  телефон горячей линии: 8-800-777-18-53
 </div>
 
-<!-- === ВИДЖЕТ === -->
-<div class="container">
+<div class="container" id="excursions">
+ <div class="section-button">
+  <a href="#excursion-widget-container" class="button">Смотреть популярные экскурсии</a>
+  <a href="#departure-location" class="button">Место отправления</a>
+ </div>
  <div class="excursions-widget-wrapper">
-   <div id="excursion-widget-container"></div>
+  <div id="excursion-widget-container"></div>
  </div>
 </div>
 
 <script>
-(function(){
- const s=document.createElement("script");
- s.src="https://ekskursii-kazani.ru/widget.js";
- s.onload=function(){
-   Widget.init({
-     apiUrl:"https://ekskursii-kazani.ru/api/widget/articles",
-     token:"32|5XMvb2INIj6FhyZ6pyaDsyEgyf30ikMa9QOYRE6aad61f90f",
-     containerId:"excursion-widget-container",
-     userId:67,
-     showKeyboard:true
-   });
+(function () {
+ var script = document.createElement('script');
+ script.src = 'https://ekskursii-kazani.ru/widget.js';
+ script.async = true;
+ script.onload = function () {
+  Widget.init({
+   apiUrl: 'https://ekskursii-kazani.ru/api/widget/articles',
+   token: '32|5XMvb2INIj6FhyZ6pyaDsyEgyf30ikMa9QOYRE6aad61f90f',
+   containerId: 'excursion-widget-container',
+   userId: 67,
+   showKeyboard: true
+  });
 
-   /* Удаление ООО "Экскурсионное бюро Казань" */
-   const obs = new MutationObserver(()=>{
-     document.querySelectorAll("#excursion-widget-container div")
-       .forEach(e=>{ if(e.innerText.includes('ООО "Экскурсионное бюро Казань"')) e.remove(); });
+  const observer = new MutationObserver(() => {
+   const elements = document.querySelectorAll("#excursion-widget-container div");
+   elements.forEach(el => {
+    if (el.innerText.includes('ООО "Экскурсионное бюро Казань"')) {
+     el.remove();
+    }
    });
-   obs.observe(document.getElementById("excursion-widget-container"), {childList:true,subtree:true});
+  });
+  observer.observe(document.getElementById("excursion-widget-container"), { childList: true, subtree: true });
  };
- document.head.appendChild(s);
+ document.head.appendChild(script);
 })();
 </script>
 
-<!-- === О НАС === -->
+<div class="footer-buttons">
+ <a href="#excursion-widget-container" class="button">Смотреть популярные экскурсии</a>
+ <a href="#departure-location" class="button">Место отправления</a>
+</div>
+
 <div class="container" id="about">
  <h2 class="section-title">О нас</h2>
- <p>
-Экскурсионное Бюро Казань — это ваш надежный гид по невероятному миру Татарстана.  
-Мы предлагаем эксклюзивные авторские туры, которые познакомят вас с историей, культурой и природой нашего региона.  
-Наша команда опытных гидов, истинных энтузиастов своего дела, гарантирует, что ваше путешествие будет наполнено яркими впечатлениями и незабываемыми эмоциями.
-<div class="list-column">
-✔ Индивидуальный подход <br>
-✔ Профессионализм и забота <br>
-✔ Безупречное качество <br>
-✔ Культура и аутентичность <br>
-✔ Бесплатное бронирование <br>
-✔ Комфортабельные автобусы <br>
-✔ Аккредитованные гиды <br>
-✔ Бесплатный радиогид для лучшей слышимости экскурсовода
+ <p>Экскурсионное Бюро Казань — это ваш надежный гид по невероятному миру Татарстана. Мы предлагаем эксклюзивные авторские туры, которые познакомят вас с историей, культурой и природой нашего региона. Наша команда опытных гидов, истинных энтузиастов своего дела, гарантирует, что ваше путешествие будет наполнено яркими впечатлениями и незабываемыми эмоциями.
+ <br><br><strong>Почему стоит выбрать именно нас?</strong>
+ <br><br>✔ Индивидуальный подход 
+ <br>✔ Профессионализм и забота 
+ <br>✔ Безупречное качество 
+ <br>✔ Культура и аутентичность
+ <br>✔ Бесплатное бронирование
+ <br>✔ Комфортабельные автобусы
+ <br>✔ Аккредитованные гиды
+ <br>✔ Бесплатный радиогид для лучшей слышимости экскурсовода
+ <br><br>Экскурсионное Бюро Казань, вы получите не просто экскурсии, а целое путешествие по пяти чувствам, которое оставит в вашем сердце частичку нашего прекрасного региона.</p>
 </div>
 
-<style>
-.list-column {
-  display: block;
-  text-align: left;
-  margin: 15px 0;
-  line-height: 1.7;
-  font-size: 1.05rem;
-}
-</style>
-
-Экскурсионное Бюро Казань — вы получите не просто экскурсии,  
-а целое путешествие по пяти чувствам, которое оставит в вашем сердце частичку нашего прекрасного региона.
- </p>
-</div>
-
-<!-- === ТРАНСПОРТ === -->
 <div class="container">
  <h2 class="section-title">Наш транспорт</h2>
  <div class="bus-photo-block">
-   <img src="https://xn----7sbaj9b1ablbd6jb.xn--p1ai/WhatsApp_Image_2025-06-02_at_20.30.42-1-.jpeg">
-   <img src="https://xn----7sbaj9b1ablbd6jb.xn--p1ai/WhatsApp_Image_2025-06-02_at_20.30.42.jpeg">
+  <img src="https://xn----7sbaj9b1ablbd6jb.xn--p1ai/WhatsApp_Image_2025-06-02_at_20.30.42-1-.jpeg" alt="Автобус 1">
+  <img src="https://xn----7sbaj9b1ablbd6jb.xn--p1ai/WhatsApp_Image_2025-06-02_at_20.30.42.jpeg" alt="Автобус 2">
  </div>
 </div>
 
-<!-- === МЕСТО ОТПРАВЛЕНИЯ === -->
-<div class="container" id="departure-location">
+<div class="departure-block" id="departure-location">
  <h2 class="section-title">Место отправления</h2>
- <p>
-Наши экскурсии начинаются в самом сердце города на улице Баумана —  
-у входа в гостиницу «Шаляпин и Богоявленской Колокольни»,  
-напротив станции метро «Площадь Тукая».  
-Удобное местоположение позволяет легко добраться из любой точки Казани.
- </p>
- <img src="https://tatar-tur.ucoz.net/WhatsApp_Image_2025-04-28_at_12.52.15.jpeg"
-      style="width:100%;border-radius:12px;margin-top:15px;">
+ <p>Наши экскурсии начинаются в самом сердце города на улице Баумана — у входа в гостиницу «Шаляпин и Богоявленской Колокольни», напротив станции метро «Площадь Тукая». Удобное местоположение позволяет легко добраться из любой точки Казани.</p>
+ <img src="https://tatar-tur.ucoz.net/WhatsApp_Image_2025-04-28_at_12.52.15.jpeg" alt="Место отправления">
+ <div class="footer-buttons" style="margin-top: 30px;">
+  <a href="#excursion-widget-container" class="button">Смотреть популярные экскурсии</a>
+ </div>
 </div>
 
-<!-- === ФУТЕР === -->
-<footer style="background:#0e97a6;color:white;text-align:center;padding:15px;margin-top:40px;">
- © 2025 Экскурсионное Бюро Казань. Все права защищены.
+<footer>
+ <p>&copy;️ 2025 Экскурсионное Бюро Казань. Все права защищены.</p>
 </footer>
 
-<!-- ❄ РАБОЧИЙ СНЕГ -->
+<div id="keyboard" class="simple-keyboard">
+ <div id="keyboard-resize-controls">
+  <button onclick="resizeKeyboard(1.1)">+</button>
+  <button onclick="resizeKeyboard(0.9)">−</button>
+ </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/simple-keyboard@3/build/index.js"></script>
+
 <script>
-setInterval(()=>{
- let f=document.createElement("div");
- f.className="snowflake";
- f.textContent="❄";
- f.style.left=Math.random()*window.innerWidth+"px";
- f.style.fontSize=(25+Math.random()*25)+"px";
- f.style.opacity=.8;
- f.style.transition=`transform ${6+Math.random()*6}s linear`;
- document.body.appendChild(f);
- requestAnimationFrame(()=>f.style.transform=`translateY(${window.innerHeight+200}px)`);
- setTimeout(()=>f.remove(),12000);
-},150);
+// код клавиатуры (исходный + доработка под виджет)
+let keyboard = null;
+let currentInput = null;
+let currentScale = 1;
+let offsetLeft = 0;
+let offsetTop = 0;
+
+function initKeyboardForInput(input) {
+ currentInput = input;
+ if (!keyboard) {
+  keyboard = new SimpleKeyboard.default({
+   onChange: value => currentInput.value = value,
+   onKeyPress: button => {
+    if (button === "{bksp}") {
+     currentInput.value = currentInput.value.slice(0, -1);
+     keyboard.setInput(currentInput.value);
+    }
+   },
+   layout: {
+    default: [
+     "1 2 3 4 5 6 7 8 9 0 {bksp}",
+     "й ц у к е н г ш щ з х ъ {bksp} ",
+     "ф ы в а п р о л д ж э",
+     "я ч с м и т ь б ю . +",
+     "{space}"
+    ]
+   },
+   display: {
+    "{bksp}": "←",
+    "{space}": "Пробел"
+   }
+  });
+ }
+ keyboard.setInput(currentInput.value || "");
+ document.getElementById("keyboard").style.display = "block";
+}
+
+/* НОВАЯ логика: привязка ко ВСЕМ input/textarea, в т.ч. из виджета */
+function attachKeyboardToInputs() {
+ const inputs = document.querySelectorAll("input, textarea");
+ inputs.forEach(input => {
+  if (!input.dataset.keyboardBound) {
+   input.dataset.keyboardBound = "1";
+   input.addEventListener("focus", () => initKeyboardForInput(input));
+  }
+ });
+}
+
+/* Первичная привязка */
+document.addEventListener("DOMContentLoaded", attachKeyboardToInputs);
+
+/* Отслеживаем новые поля (в том числе создаваемые виджетом) */
+const observerForWidgetInputs = new MutationObserver(() => {
+ attachKeyboardToInputs();
+});
+observerForWidgetInputs.observe(document.body, { childList: true, subtree: true });
+
+/* Закрытие клавы при клике вне */
+document.addEventListener("click", e => {
+ if (!e.target.closest("input") &&
+     !e.target.closest("textarea") &&
+     !e.target.closest(".simple-keyboard")) {
+  document.getElementById("keyboard").style.display = "none";
+ }
+});
+
+/* Перетаскивание клавиатуры */
+(function() {
+ const keyboardEl = document.getElementById("keyboard");
+ let isDragging = false;
+ let startY, startX;
+
+ keyboardEl.addEventListener("touchstart", e => {
+  if (e.touches.length === 1) {
+   isDragging = true;
+   const touch = e.touches[0];
+   startX = touch.clientX - offsetLeft;
+   startY = touch.clientY - offsetTop;
+  }
+ });
+
+ keyboardEl.addEventListener("touchmove", e => {
+  if (isDragging && e.touches.length === 1) {
+   const touch = e.touches[0];
+   offsetLeft = touch.clientX - startX;
+   offsetTop = touch.clientY - startY;
+   keyboardEl.style.transform =
+     `scale(${currentScale}) translate(${offsetLeft / currentScale}px, ${offsetTop / currentScale}px)`;
+  }
+ });
+
+ keyboardEl.addEventListener("touchend", () => {
+  isDragging = false;
+ });
+})();
+
+function resizeKeyboard(factor) {
+ currentScale *= factor;
+ const keyboardEl = document.getElementById("keyboard");
+ keyboardEl.style.transform =
+   `scale(${currentScale}) translate(${offsetLeft / currentScale}px, ${offsetTop / currentScale}px)`;
+ keyboardEl.style.transformOrigin = "bottom left";
+}
+
+/* Блокируем жесты зума и выделение */
+['gesturestart','gesturechange','gestureend'].forEach(event => {
+ document.addEventListener(event, e => e.preventDefault());
+});
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(event) {
+ const now = new Date().getTime();
+ if (now - lastTouchEnd <= 300) {
+  event.preventDefault();
+ }
+ lastTouchEnd = now;
+}, false);
+
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+document.addEventListener('copy', function(e) { e.preventDefault(); });
+document.addEventListener('selectstart', function(e) { e.preventDefault(); });
 </script>
+
+<!-- ❄️ ПАДАЮЩИЕ СНЕЖИНКИ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+ const snowContainer = document.createElement('div');
+ snowContainer.style.position = 'fixed';
+ snowContainer.style.top = '0';
+ snowContainer.style.left = '0';
+ snowContainer.style.width = '100%';
+ snowContainer.style.height = '100%';
+ snowContainer.style.pointerEvents = 'none';
+ snowContainer.style.zIndex = '99999';
+ document.body.appendChild(snowContainer);
+
+ function createSnowflake() {
+  const snowflake = document.createElement('div');
+  snowflake.innerHTML = '❄';
+  snowflake.style.position = 'absolute';
+  snowflake.style.color = 'white';
+  snowflake.style.fontSize = Math.random() * 35 + 30 + 'px';
+  snowflake.style.left = Math.random() * window.innerWidth + 'px';
+  snowflake.style.opacity = 0.6 + Math.random() * 0.4;
+  snowflake.style.animation = `fall ${4 + Math.random() * 6}s linear`;
+  snowContainer.appendChild(snowflake);
+
+  setTimeout(() => snowflake.remove(), 12000);
+ }
+
+ setInterval(createSnowflake, 150);
+
+ const style = document.createElement('style');
+ style.innerHTML = `
+ @keyframes fall {
+  to { transform: translateY(100vh); }
+ }
+ `;
+ document.head.appendChild(style);
+});
+</script>
+
+<!-- 🚀 АВТО-СЛАЙДЕР ФОНА HERO (5 СЕК) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+ const hero = document.querySelector('.hero');
+ if (!hero) return;
+
+ const heroImages = [
+  "https://tatar-tur.ucoz.net/1460745080-1-.jpg",
+  "https://hotelamsterdam.ucoz.net/kazan-3227834.jpg",
+  "https://hotelamsterdam.ucoz.net/kazan-2825615.jpg",
+  "https://hotelamsterdam.ucoz.net/temple-4981094-1-.jpg",
+  "https://hotelamsterdam.ucoz.net/city-1479947.jpg"
+ ];
+
+ let current = 0;
+
+ function setHeroBg() {
+  hero.style.backgroundImage = `url('${heroImages[current]}')`;
+  current = (current + 1) % heroImages.length;
+ }
+
+ setHeroBg(); // первый фон сразу
+ setInterval(setHeroBg, 5000); // смена каждые 5 секунд
+});
+</script>
+ 
+<!-- 🔽 WINDOWS-БАННЕР 🔽 -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+ const isWindows = navigator.userAgent.includes("Windows");
+
+ if (!isWindows) return;
+
+ const banner = document.createElement("div");
+ banner.id = "win-ad-banner";
+ banner.innerHTML = `
+ <div class="win-ad-content">
+  <span class="win-ad-text">🔥 Зимние экскурсии со скидкой 20%! Успей забронировать!</span>
+  <button class="win-ad-close">×</button>
+ </div>
+ `;
+
+ document.body.appendChild(banner);
+
+ const close = () => {
+  banner.style.top = "-120px";
+  setTimeout(() => banner.remove(), 600);
+ };
+
+ document.querySelector(".win-ad-close").onclick = close;
+
+ setTimeout(() => banner.classList.add("show"), 300);
+
+ setTimeout(close, 4000); // авто-закрытие через 4 сек
+});
+</script>
+
+<style>
+#win-ad-banner {
+ position: fixed;
+ top: -120px;
+ left: 0;
+ width: 100%;
+ background: #4CAF50;
+ color: white;
+ padding: 15px 0;
+ z-index: 999999;
+ box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+ transition: top 0.6s ease;
+}
+#win-ad-banner .win-ad-content {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 20px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ font-size: 18px;
+ font-weight: bold;
+}
+.win-ad-close {
+ background: rgba(0,0,0,0.2);
+ border: none;
+ color: white;
+ font-size: 28px;
+ cursor: pointer;
+ padding: 0 12px;
+ border-radius: 6px;
+}
+#win-ad-banner.show {
+ top: 0;
+}
+</style>
+
+<div id="powered-by">$POWERED_BY$</div>
 
 </body>
 </html>
