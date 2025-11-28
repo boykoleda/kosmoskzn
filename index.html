@@ -3,7 +3,7 @@
 <head>
  <meta charset="UTF-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
- <title>ханума — Экскурсии по Казани и Татарстану</title>
+ <title>Космос — Экскурсии по Казани и Татарстану</title>
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@3/build/css/index.css">
  <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -215,6 +215,24 @@ footer {
 #keyboard-resize-controls button:hover {
  background-color: #0fa5b3;
 }
+/* 🔥 Фикс бага Windows — скрываем лупу */
+img[alt="Search"] ,
+button[title="Search"],
+div[role="button"][aria-label*="Search"],
+div[aria-label*="Поиск"],
+div[aria-label*="search"],
+div[aria-label*="лупа"],
+div[aria-label*="magnify"],
+div[class*="zoom"],
+div[class*="magnifier"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+</style>
+
  </style>
 </head>
 
