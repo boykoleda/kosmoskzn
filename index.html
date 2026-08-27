@@ -260,36 +260,18 @@ div[class*="magnifier"] {
   <a href="#departure-location" class="button">Место отправления</a>
  </div>
  <div class="excursions-widget-wrapper">
-  <div id="excursion-widget-container"></div>
+  <div id="excursion-widget-container">
+   <div id="tatturist-excursions"></div>
+  </div>
  </div>
 </div>
 
-<script>
-(function () {
- var script = document.createElement('script');
- script.src = 'https://ekskursii-kazani.ru/widget.js';
- script.async = true;
- script.onload = function () {
-  Widget.init({
-   apiUrl: 'https://ekskursii-kazani.ru/api/widget/articles',
-   token: '32|5XMvb2INIj6FhyZ6pyaDsyEgyf30ikMa9QOYRE6aad61f90f',
-   containerId: 'excursion-widget-container',
-   userId: 67,
-   showKeyboard: true
-  });
-
-  const observer = new MutationObserver(() => {
-   const elements = document.querySelectorAll("#excursion-widget-container div");
-   elements.forEach(el => {
-    if (el.innerText.includes('ООО "Экскурсионное бюро Казань"')) {
-     el.remove();
-    }
-   });
-  });
-  observer.observe(document.getElementById("excursion-widget-container"), { childList: true, subtree: true });
- };
- document.head.appendChild(script);
-})();
+<script
+ src="https://www.tatturist.ru/widget/loader.js?v=11"
+ data-partner="v1.339922.3beac45e3a10aff9d83c2bd4e67651dd"
+ data-columns="3"
+ data-theme="light"
+ data-title="Экскурсии по Казани">
 </script>
 
 <div class="footer-buttons">
