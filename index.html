@@ -243,7 +243,7 @@ div[class*="magnifier"] {
  <a href="#departure-location" class="button">Место отправления</a>
 </nav>
 
-<div class="hero">
+<div class="hero" style="background-image: url('https://www.tatturist.ru/images/1460745080.jpg');">
  <div class="hero-text">
   <h1>Экскурсии</h1>
   <p>по Казани и Татарстану!<br>Авторские туры, лучшие гиды и незабываемые впечатления</p>
@@ -445,7 +445,7 @@ document.addEventListener('selectstart', function(e) { e.preventDefault(); });
 
 <!-- 🚀 АВТО-СЛАЙДЕР ФОНА HERO (5 СЕК) -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+function initHeroSlider() {
  const hero = document.querySelector('.hero');
  if (!hero) return;
 
@@ -456,16 +456,26 @@ document.addEventListener('DOMContentLoaded', () => {
   "https://www.tatturist.ru/images/exec-8e254b0a-c190-4cf6-9cf5-25a9fbcd2fa2.png"
  ];
 
- let current = 0;
+ heroImages.forEach(src => {
+  const image = new Image();
+  image.src = src;
+ });
+
+ let current = 1;
 
  function setHeroBg() {
-  hero.style.backgroundImage = `url('${heroImages[current]}')`;
+  hero.style.backgroundImage = `url("${heroImages[current]}")`;
   current = (current + 1) % heroImages.length;
  }
 
- setHeroBg(); // первый фон сразу
- setInterval(setHeroBg, 5000); // смена каждые 5 секунд
-});
+ window.setInterval(setHeroBg, 5000);
+}
+
+if (document.readyState === 'loading') {
+ document.addEventListener('DOMContentLoaded', initHeroSlider, { once: true });
+} else {
+ initHeroSlider();
+}
 </script>
  
 <!-- 🔽 WINDOWS-БАННЕР 🔽 -->
